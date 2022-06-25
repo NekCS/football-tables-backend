@@ -47,6 +47,7 @@ const updateStandings = (competitionCode, seasonYear) => {
 
 const parseStandings = (standings, seasonYear) => {
 	const newStandings = {
+		slug: `${standings.competition.code}-${seasonYear}`,
 		competition: standings.competition,
 		season: {
 			...standings.season,

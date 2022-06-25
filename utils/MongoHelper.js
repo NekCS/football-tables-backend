@@ -34,6 +34,44 @@ class MongoHelper {
 		const promise = this.client
 			.db('football-data')
 			.collection('standings')
+			.aggregate([
+				{
+					$sort: {
+						updated: -1,
+					},
+				},
+				{
+					$group: {
+						_id: { slug: '$slug' },
+						slug: { $first: '$slug' },
+						competition: { $first: '$competition' },
+						standings: { $first: '$standings' },
+						season: { $first: '$season' },
+						updated: { $first: '$updated' },
+					},
+				},
+				{
+					$project: {
+						_id: 0,
+						slug: 1,
+						updated: 1,
+						'competition.name': 1,
+						'competition.code': 1,
+						'season.startDate': 1,
+						'season.endDate': 1,
+						'season.year': 1,
+						standings: 1,
+					},
+				},
+			])
+			.toArray();
+
+		return promise;
+	}
+	/* getStandings() {
+		const promise = this.client
+			.db('football-data')
+			.collection('standings')
 			.find(
 				{},
 				{
@@ -51,7 +89,7 @@ class MongoHelper {
 			.toArray();
 
 		return promise;
-	}
+	} */
 
 	saveStandings(standings) {
 		const promise = this.client
