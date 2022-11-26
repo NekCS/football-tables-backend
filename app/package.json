@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "nodemon app.js",
     "start": "node app.js",
-    "dev:mongo": "mnodemon utils/FootballMongo.js",
+    "dev:mongo": "nodemon utils/FootballMongo.js",
     "dev:fd": "node controllers/fd.controller.js"
   },
   "dependencies": {

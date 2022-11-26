@@ -11,14 +11,14 @@ const PORT = process.env.PORT ?? 5000;
 
 mongoHelper.connect(() => {
 	// console.log(process.env.mode);
-	updateAllStandings();
-	const updateStandingsJob = new CronJob(
-		'0 */3 * * *',
-		updateAllStandings,
-		null,
-		true,
-		'Europe/Athens'
-	);
+	// updateAllStandings();
+	// const updateStandingsJob = new CronJob(
+	// 	'0 */3 * * *',
+	// 	updateAllStandings,
+	// 	null,
+	// 	true,
+	// 	'Europe/Athens'
+	// );
 });
 
 app.use('/api', apiRouter);

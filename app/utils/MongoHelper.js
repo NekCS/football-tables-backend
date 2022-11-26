@@ -13,6 +13,7 @@ class MongoHelper {
 				if (typeof callback === 'function') callback();
 			})
 			.catch((error) => {
+				console.log(error);
 				console.error('Mongo connection error');
 			});
 	}
