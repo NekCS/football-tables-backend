@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT ?? 5000;
 
 mongoHelper.connect(() => {
-	// console.log(process.env.mode);
+	//TODO Change update frequency on past seasons.
 	updateAllStandings();
 	const updateStandingsJob = new CronJob(
 		'0 */3 * * *',
@@ -22,7 +22,8 @@ mongoHelper.connect(() => {
 });
 
 app.use('/api', apiRouter);
-app.use('/', (req, res) => res.send('Hello world'));
+app.all('/', (req, res) => res.send('Football Data API'));
+app.all('*', (req, res) => res.status(403).send('Bad request'));
 
 mongoHelper.connect(() => {
 	app.listen(PORT, () => {

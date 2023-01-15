@@ -8,11 +8,16 @@ const mongoHelper = new MongoHelper(process.env.MONGO_URI);
 
 const updateAllStandings = () => {
 	updateStandings('PL', 2020);
-	updateStandings('FL1', 2020);
 	updateStandings('PL', 2021);
+	updateStandings('PL', 2022);
+
+	updateStandings('FL1', 2020);
 	updateStandings('FL1', 2021);
-	updateStandings('BL1', 2021);
+	updateStandings('FL1', 2022);
+
 	updateStandings('BL1', 2020);
+	updateStandings('BL1', 2021);
+	updateStandings('BL1', 2022);
 };
 
 const getAllStandings = () => {
