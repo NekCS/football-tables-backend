@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const CronJob = require('cron').CronJob;
+const cors = require('cors');
 const apiRouter = require('./routes/apiRouter');
 const {
 	mongoHelper,
@@ -21,6 +22,7 @@ mongoHelper.connect(() => {
 	);
 });
 
+app.use(cors());
 app.use('/api', apiRouter);
 app.all('/', (req, res) => res.send('Football Data API'));
 app.all('*', (req, res) => res.status(403).send('Bad request'));
