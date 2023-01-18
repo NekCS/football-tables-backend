@@ -11,7 +11,7 @@ class FootballDataApi {
 		const apiKey = inputApiKey;
 
 		this.axiosObj = axios.create({
-			baseURL: 'http://api.football-data.org/v2',
+			baseURL: 'https://api.football-data.org/v4',
 			headers: {
 				'X-Auth-Token': apiKey,
 			},
